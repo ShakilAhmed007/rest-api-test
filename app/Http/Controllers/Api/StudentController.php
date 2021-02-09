@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\StudenClass;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -14,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $studentClass = StudenClass::all();
+        return $studentClass;
     }
 
     /**
@@ -35,7 +37,8 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $students = StudenClass::create($request->all());
+        return 'done';
     }
 
     /**
