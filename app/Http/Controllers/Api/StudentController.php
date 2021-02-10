@@ -49,7 +49,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $show = StudenClass::find($id);
+        return $show;
     }
 
     /**
@@ -60,7 +61,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        
+        
     }
 
     /**
@@ -72,7 +75,10 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = StudenClass::find($id);
+        $update->name = $request->name;
+        $update->save();
+        return 'updated';
     }
 
     /**
@@ -83,6 +89,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = StudenClass::find($id);
+        $delete->delete();
+        return 'row deleted';
     }
 }
