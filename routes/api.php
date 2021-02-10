@@ -19,3 +19,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 //api resource route
 Route::apiResource('/student', 'App\Http\Controllers\Api\StudentController');
+
+Route::group([
+    'middleware' => 'api',
+    'namespace' => 'App\Http\Controllers\Api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+    Route::post('payload', 'AuthController@payload');
+    Route::post('register', 'AuthController@register');
+
+});
